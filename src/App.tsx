@@ -10,7 +10,7 @@ const App: React.FC = () => {
   const [snake, setSnake] = useState<Coordinate[]>([{ x: Math.floor(BOARD_WIDTH / 2), y: Math.floor(BOARD_HEIGHT / 2) }]);
   const [apple, setApple] = useState<Coordinate>(getRandomPosition());
   const [direction, setDirection] = useState<Coordinate>({ x: 1, y: 0 });
-  const [fps, setFps] = useState(5);
+  const [fps, setFps] = useState(8);
 
   const gameLoopRef = useRef<number>();
 

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Coordinate } from '../types/types';
-import { BOARD_HEIGHT, BOARD_WIDTH, SQUARE_SIZE } from '../constants/constants';
+import React from "react";
+import { Coordinate } from "../types/types";
+import { BOARD_HEIGHT, BOARD_WIDTH, SQUARE_SIZE } from "../constants/constants";
 
 interface BoardProps {
   snake: Coordinate[];
@@ -14,13 +14,13 @@ const Board: React.FC<BoardProps> = ({ snake, apple }) => {
         <div className="row" key={rowIndex}>
           {Array.from({ length: BOARD_WIDTH }).map((_, colIndex) => {
             const isSnake = snake.some(
-              (segment) => segment.x === colIndex && segment.y === rowIndex
+              (segment) => segment.x === colIndex && segment.y === rowIndex,
             );
             const isApple = apple.x === colIndex && apple.y === rowIndex;
             return (
               <div
-                className={`square ${isSnake ? 'snake' : ''} ${
-                  isApple ? 'apple' : ''
+                className={`square ${isSnake ? "snake" : ""} ${
+                  isApple ? "apple" : ""
                 }`}
                 key={colIndex}
                 style={{

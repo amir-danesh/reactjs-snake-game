@@ -1,5 +1,5 @@
-import { Coordinate } from '../types/types';
-import { getRandomPosition } from '../utils/getRandomPosition';
+import { Coordinate } from "../types/types";
+import { getRandomPosition } from "../utils/getRandomPosition";
 
 export const moveSnake = (
   snake: Coordinate[],
@@ -7,7 +7,7 @@ export const moveSnake = (
   apple: Coordinate,
   setApple: (pos: Coordinate) => void,
   setSnake: (snake: Coordinate[]) => void,
-  gameLoopRef: React.MutableRefObject<number | undefined>
+  gameLoopRef: React.MutableRefObject<number | undefined>,
 ) => {
   const newHead = {
     x: snake[0].x + direction.x,
@@ -15,14 +15,9 @@ export const moveSnake = (
   };
 
   // Check collision with walls
-  if (
-    newHead.x < 0 ||
-    newHead.x >= 25 ||
-    newHead.y < 0 ||
-    newHead.y >= 18
-  ) {
+  if (newHead.x < 0 || newHead.x >= 25 || newHead.y < 0 || newHead.y >= 18) {
     clearInterval(gameLoopRef.current);
-    alert('Game Over');
+    alert("Game Over");
     return;
   }
 
@@ -30,7 +25,7 @@ export const moveSnake = (
   for (let i = 1; i < snake.length; i++) {
     if (snake[i].x === newHead.x && snake[i].y === newHead.y) {
       clearInterval(gameLoopRef.current);
-      alert('Game Over');
+      alert("Game Over");
       return;
     }
   }
@@ -39,7 +34,7 @@ export const moveSnake = (
 
   // Check collision with apple
   if (newHead.x === apple.x && newHead.y === apple.y) {
-    setApple(getRandomPosition());
+    setApple(getRandomPosition(snake));
   } else {
     newSnake.pop();
   }
