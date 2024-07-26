@@ -9,8 +9,13 @@ export const getRandomPosition = (
     y: Math.floor(Math.random() * BOARD_HEIGHT),
   });
 
-  const isPositionInExceptions = (position: Coordinate, exceptions: Coordinate[]): boolean => {
-    return exceptions.some(coord => coord.x === position.x && coord.y === position.y);
+  const isPositionInExceptions = (
+    position: Coordinate,
+    exceptions: Coordinate[],
+  ): boolean => {
+    return exceptions.some(
+      (coord) => coord.x === position.x && coord.y === position.y,
+    );
   };
 
   const position = exceptions
